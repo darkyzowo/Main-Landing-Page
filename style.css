@@ -1,0 +1,96 @@
+:root {
+    --g1: #ff7c50;
+    --g2: #ec407a;
+}
+
+@keyframes background-pan {
+    from {
+        background-position: 0% center;
+    }
+
+    to {
+        background-position: -200% center;
+    }
+}
+
+body {
+    animation: background-pan 10s linear infinite;
+    background: linear-gradient(to right,
+            var(--g1),
+            var(--g2),
+            var(--g1));
+    background-size: 200%;
+    height: 100vh;
+    overflow: hidden;
+    margin: 0px;
+}
+
+body.toggled {
+    animation: none;
+}
+
+body.toggled>#title {
+    opacity: 0;
+}
+
+body.toggled>.class1 {
+    opacity: 1;
+}
+
+body.toggled>.class1>.class1:hover {
+    opacity: 0.1 !important;
+}
+
+.centered {
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#tiles {
+    height: calc(100vh - 1px);
+    width: calc(100vw - 1px);
+    position: relative;
+    z-index: 2;
+
+    display: grid;
+    grid-template-columns: repeat(var(--columns), 1fr);
+    grid-template-rows: repeat(var(--rows), 1fr);
+}
+
+.tile {
+    cursor: pointer;
+    position: relative;
+}
+
+.tile:hover:before {
+    background-color: rgb(30, 30, 30);
+}
+
+.tile:before {
+    background-color: rgb(15, 15, 15);
+    content: "";
+    inset: 0.5px;
+    position: absolute;
+}
+
+#title {
+
+    color: white;
+    font-family: "Rubik", sans-serif;
+    font-size: 6vw;
+    margin: 0px;
+    pointer-events: none;
+    transition: opacity 1200ms ease;
+    width: 50vw;
+    z-index: 3;
+}
+
+#title>.fancy {
+
+    color: #ff7c50;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 1.6em;
+    line-height: 0.9em;
+}
